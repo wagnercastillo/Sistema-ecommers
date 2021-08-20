@@ -7,7 +7,7 @@ import AddressForm from '../AddressForm';
 import PaymentForm from '../PaymentForm';
 import useStyles from './styles';
 
-const steps = ['Shipping address', 'Payment details'];
+const steps = ['Direccion de envio', 'Detalles del pago'];
 
 const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
   const [checkoutToken, setCheckoutToken] = useState(null);
@@ -44,12 +44,12 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
   let Confirmation = () => (order.customer ? (
     <>
       <div>
-        <Typography variant="h5">Thank you for your purchase, {order.customer.firstname} {order.customer.lastname}!</Typography>
+        <Typography variant="h5">Gracias por tu compra, {order.customer.firstname} {order.customer.lastname}!</Typography>
         <Divider className={classes.divider} />
-        <Typography variant="subtitle2">Order ref: {order.customer_reference}</Typography>
+        <Typography variant="subtitle2">Orden de referencia: {order.customer_reference}</Typography>
       </div>
       <br />
-      <Button component={Link} variant="outlined" type="button" to="/">Back to home</Button>
+      <Button component={Link} variant="outlined" type="button" to="/">Regresar a la Tienda</Button>
     </>
   ) : (
     <div className={classes.spinner}>
@@ -60,9 +60,9 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
   if (error) {
     Confirmation = () => (
       <>
-        <Typography variant="h5">Error: {error}</Typography>
+        <Typography variant="h5">Ups! Ocurrio un error: {error}</Typography>
         <br />
-        <Button component={Link} variant="outlined" type="button" to="/">Back to home</Button>
+        <Button component={Link} variant="outlined" type="button" to="/">Regresar a la Tienda</Button>
       </>
     );
   }
@@ -77,7 +77,7 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
       <div className={classes.toolbar} />
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-          <Typography variant="h4" align="center">Checkout</Typography>
+          <Typography variant="h4" align="center">Datos complementarios</Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (
               <Step key={label}>
